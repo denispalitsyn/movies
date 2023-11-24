@@ -1,13 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  @apply bg-black text-white;
+
+  font-family: 'Lato';
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.backdrop {
+  background: linear-gradient(
+      0deg,
+      rgba(19, 19, 19, 1) 0%,
+      rgba(19, 19, 19, 0.5) 100%
+    ),
+    var(--url, '');
+  background-size: cover;
+  background-position: 50% 25%;
+}
+
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-enter-active {
+  opacity: 1;
+  transition: opacity 300ms, transform 300ms;
+}
+
+.modal-exit {
+  opacity: 1;
+}
+
+.modal-exit-active {
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}
+
+.custom-loader {
+  width: 120px;
+  height: 20px;
+  background: linear-gradient(#fff 0 0) left -40px top 0/40px 100% no-repeat #141414;
+  mask: linear-gradient(#000 0 0) top / 100% 5px no-repeat,
+    linear-gradient(#000 0 0) bottom/100% 5px no-repeat,
+    repeating-linear-gradient(90deg, #000 0 5px, #0000 0 20%)
+      left/calc(100% - 5px) 100%;
+  -webkit-mask: linear-gradient(#000 0 0) top / 100% 5px no-repeat,
+    linear-gradient(#000 0 0) bottom/100% 5px no-repeat,
+    repeating-linear-gradient(90deg, #000 0 5px, #0000 0 20%)
+      left/calc(100% - 5px) 100%;
+  animation: ct10 1s infinite linear;
+}
+
+@keyframes ct10 {
+  100% {
+    background-position: right -40px top 0;
+  }
 }
